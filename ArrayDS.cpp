@@ -42,6 +42,7 @@ Array::Array(Array &C)
     lastIndex=C.lastIndex;
     p=C.p;
     p=new int [capacity];
+    
 }
 void Array::creatArray()
 {
