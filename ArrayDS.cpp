@@ -56,7 +56,7 @@ void Array::getArray()
         throw ARRAY_NOT_CREATED;
     for(int i=0;i<=lastIndex;i++)
         cout<<p[i]<<" ";
-    
+    // This is code added by 2nd dev
 }
 bool Array::IsEmpty()
 {
