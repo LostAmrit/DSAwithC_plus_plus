@@ -58,7 +58,7 @@ Array Array::operator=(Array &C)
             throw NILL_POINTER_ERROR;
         if(p != nullptr)
         {
-            delete p;
+            delete[] p;
             p=nullptr;
             capacity=C.capacity;
             lastIndex=C.lastIndex;
