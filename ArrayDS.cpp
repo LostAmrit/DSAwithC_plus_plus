@@ -3,6 +3,7 @@
 #define ARRAY_OVERFLOW 2
 #define ARRAY_UNDERFLOW 3
 #define INVAILID_INDEX 4
+#define NILL_POINTER_ERROR 5
 using namespace std;
 //1. Define a class Array to implement array data structure with member variables to store capacity of array, last index at the filled block of the array and the pointer to hold the address of the first block of the dynamically created array.
 class Array
@@ -26,6 +27,7 @@ class Array
         virtual ~Array();
         int find(int);
         void getArray();
+        Array operator=(Array &C);
 };
 Array::Array(int size)
 {
@@ -40,6 +42,32 @@ void Array::creatArray()
     if(capacity<0)
         throw ARRAY_NOT_CREATED;
     p=new int[capacity];
+}
+Array::Array(Array &C)
+{
+    capacity=C.capacity;
+    lastIndex=C.lastIndex;
+    p=C.p;
+    
+}
+Array Array::operator=(Array &C)
+{
+    if(this != &C)
+    {
+        if(C.p==nullptr)
+            throw NILL_POINTER_ERROR;
+        if(p != nullptr)
+        {
+            delete p;
+            p=nullptr;
+            capacity=C.capacity;
+            lastIndex=C.lastIndex;
+            int *p=new int[capacity];
+            for(int i=0;i<C.lastIndex;i++)
+                p[i]=C.p[i];
+        }
+    }
+    return *this;
 }
 void Array::getArray()
 {
@@ -141,13 +169,16 @@ int main()
             A.Append(a);
             
         }
-        if(4>A.getLastIndex())
-            return 1;
-        cout<<A.find(5)<<endl;
-        if(3>A.getLastIndex())
-            return 3;
+        // if(4>A.getLastIndex())
+        //     return 1;
+        // cout<<A.find(5)<<endl;
+        // if(3>A.getLastIndex())
+        //     return 3;
         //A.Delete(4);
-        A.getArray();
+         Array B(5);
+         B.creatArray();
+         B=A;
+        B.getArray();
 
     }
     catch(int e){
