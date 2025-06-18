@@ -35,15 +35,6 @@ Array::Array(int size)
     capacity=size;
     lastIndex=-1;         
 }
-Array::Array(Array &C)
-{
-    //capacity=size;
-    capacity=C.capacity;
-    lastIndex=C.lastIndex;
-    p=C.p;
-    p=new int [capacity];
-    
-}
 void Array::creatArray()
 {
     if(capacity<0)
